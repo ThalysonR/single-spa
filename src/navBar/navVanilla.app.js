@@ -2,6 +2,7 @@ import '@babel/polyfill';
 
 let inner, container;
 
+
 export async function bootstrap() {
     container = document.getElementById('navBar');
 
@@ -27,6 +28,7 @@ export async function bootstrap() {
 
 export async function mount() {
     inner.style.display = 'block';
+    if(container.styles)
     container.styles.display = 'flex';
 }
 
