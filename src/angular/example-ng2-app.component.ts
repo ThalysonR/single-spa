@@ -8,7 +8,7 @@ import {CounterService} from "./counter.service";
 })
 export class ExampleNg2App implements OnInit{
 
-    constructor(@Inject(CounterService) private counter: CounterService) {
+    constructor(private counter: CounterService) {
     }
 
     ngOnInit(): void {

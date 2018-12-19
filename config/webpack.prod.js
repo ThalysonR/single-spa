@@ -90,21 +90,21 @@ module.exports = merge(common, {
     strictExportPresence: true,
     rules: [
       { parser: { requireEnsure: false } },
-      {
-        test: /\.(js|mjs|jsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: require.resolve('react-dev-utils/eslintFormatter'),
-              eslintPath: require.resolve('eslint'),
-
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appSrc,
-      },
+      // {
+      //   test: /\.(js|mjs|jsx)$/,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       options: {
+      //         formatter: require.resolve('react-dev-utils/eslintFormatter'),
+      //         eslintPath: require.resolve('eslint'),
+      //
+      //       },
+      //       loader: require.resolve('eslint-loader'),
+      //     },
+      //   ],
+      //   include: paths.appSrc,
+      // },
       {
         oneOf: [
           {
@@ -137,6 +137,20 @@ module.exports = merge(common, {
               cacheCompression: true,
               compact: true,
             },
+          },
+          {
+            test: /\.ts$/,
+            loaders: [
+              require.resolve('babel-loader'),
+              {
+                loader: require.resolve('awesome-typescript-loader'),
+                options: {
+                  configFileName: paths.tsConfig
+                }
+              },
+              require.resolve('angular2-template-loader'),
+              require.resolve('angular2-router-loader')
+            ]
           },
           {
             test: regex.css,
@@ -181,6 +195,11 @@ module.exports = merge(common, {
               'sass-loader',
               prodConf,
             ),
+          },
+          {
+            test: /\.html$/,
+            exclude: paths.appHtml,
+            loader: require.resolve('html-loader')
           },
           {
             loader: require.resolve('file-loader'),

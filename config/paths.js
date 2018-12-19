@@ -40,5 +40,6 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
-  tsConfig: resolveApp('tsconfig.json')
+  tsConfig: resolveApp('tsconfig.json'),
+  tsAotConfig: resolveApp('tsconfig.aot.json')
 };
